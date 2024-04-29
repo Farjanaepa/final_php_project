@@ -13,8 +13,8 @@ if ($_GET['id']){
    $data = mysqli_fetch_assoc($query);
    $id = $data['id'];
    $name = $data['name'];
-   $phone = $data['phone'];
    $email = $data['email'];
+   $phone = $data['phone'];
    $address = $data['address'];
 }
      if (isset($_POST['edit'])) {
@@ -23,10 +23,7 @@ if ($_GET['id']){
         $email = $_POST['email'];
         $phone = $_POST['phone'];
         $address = $_POST['address'];
-
-
-
-         $manufac = $_POST['manufacturer_id'];
+        
      $sql1 = "UPDATE suppliers SET name='$name',
                                 email='$email',
                                 phone='$phone',
@@ -54,17 +51,20 @@ if ($_GET['id']){
     
         <div class="col-sm-3"></div>
        
-        <div class="col-sm-6 pt-4 mt-4 ">
+        <div class="col-sm-6 pt-4 mt-4 bg-dark text-white ">
             
     <form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST"> 
         Name:<br>
         <input type ="text" name ="name" value="<?php echo $name ?>"><br><br>
         Email:<br>
-        <input type ="text" name ="price" value="<?php echo $email ?>"><br><br>
+        <input type ="text" name ="email" value="<?php echo $email ?>"><br><br>
         Phone:<br>
         <input type ="text" name ="phone" value="<?php echo $phone ?>"><br><br>
-        <input type ="text" name ="id" value =" <?php echo $id ?>" hidden><br><br>
-        <input type ="submit" name ="edit" value="Edit" class="btn btn-success">
+        
+        <input type ="text" name ="id" value =" <?php echo $id ?>" hidden><br>
+        Address:<br>
+        <textarea name="address" id="" value="<?php echo $address ?>"></textarea><br><br>
+        <input type ="submit" name ="edit" value="Edit" class="btn btn-info"><br><br>
     </form>
    
     </div>

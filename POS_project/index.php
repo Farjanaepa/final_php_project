@@ -92,14 +92,16 @@ if(isset($_POST["btnLogin"])){
             border-radius: 5px;
         }
 
-        button {
+        #button {
             border: none;
             color: #fff;
-            font-size: 15px;
+            font-size: 18px;
             padding: 10px;
             cursor: pointer;
             font-weight: bold;
             border-radius: 5px;
+            float:right;
+            width:10rem;
             background: linear-gradient(to right, rgb(76, 0, 255), rgb(0, 217, 255));
         }
         button a{
@@ -144,7 +146,7 @@ if(isset($_POST["btnLogin"])){
             <label for="password"><span>Password</span></label>
             <input type="password" name="txtPassword" id="password">
             <div>
-            <input type="submit" value="Log In" name="btnLogin">
+            <input type="submit" value="Login" name="btnLogin" id= "button" class= "btn btn-login bg-primary">
         </div>
         </form>
         <p class="newUser">

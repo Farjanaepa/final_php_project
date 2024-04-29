@@ -1,3 +1,5 @@
+
+
 <body>
     <div class="sidebar">
         <div class="logo"><img src="logo/logopic.png" alt=""></div>
@@ -16,9 +18,17 @@
                 </a>
             </li>
             <li>
-                <a href="category.php">
-                    <i class="fa fa-windows"></i>
+                <a href="#">
+                    <i class="fa fa-list"></i>
                     <span>Category</span>
+
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa fa-windows"></i>
+                    <span>Sub-Category</span>
 
                 </a>
             </li>
@@ -26,6 +36,14 @@
                 <a href="insert.php">
                     <i class="fa fa-windows"></i>
                     <span>Product</span>
+
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa fa-cart-arrow-down"></i>
+                    <span>Purchase Order</span>
 
                 </a>
             </li>
@@ -61,6 +79,8 @@
                     
                 </ul>
             </li>
+
+
 
             
 

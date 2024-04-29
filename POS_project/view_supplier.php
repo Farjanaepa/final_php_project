@@ -26,24 +26,24 @@ if (isset($_GET['deleteid'])){
     <div class="row"> 
     <p>
      
-     <a href="insert.php">
-        <h1 class="btn btn-success" style="text-color:#fff">Add New Data</h1></a>
+    <span class='btn btn-success'><a href='insert_supplier.php' class='text-white text-decoration-none'>Add New supplier</a></span>
     </p>
         <div class="col-sm-1"></div>
-        <div class="col-sm-10 pt-4 mt-4 border border-success"> 
+        <div class="col-sm-10 pt-4 mt-4 border border-success bg-secondary text-white"> 
            
-            <h3 class="text-center p-2 m-2 bg-success text-white">User Information</h3>
+            <h3 class="text-center p-2 m-2 bg-dark text-white">Supplier Information</h3>
            
             <?php 
             $sql = 'SELECT * FROM suppliers';
             
             $query = mysqli_query($conn, $sql);
             echo "<table class='table table-success'>
-             <tr>
+             <tr class='table-dark'>
                 <th>ID</th>
                 <th>NAME</th>
-                <th>PRICE</th>
-                <th>MANUFACTURER_ID</th>
+                <th>EMAIL</th>
+                <th>PHONE</th>
+                <th>ADDRESS</th>
                 <th>ACTION</th>
              </tr>";
            while ($data = mysqli_fetch_assoc($query)){ 
@@ -52,11 +52,15 @@ if (isset($_GET['deleteid'])){
             $name = $data['name'];
             $email = $data['email'];
             $phone = $data['phone'];
+            $address = $data['address'];
+
             echo "<tr> 
                     <td>$id</td>
                     <td>$name</td>
                     <td>$email</td>
                     <td>$phone</td>
+                    <td>$address</td>
+
                     <td>
                     <span class='btn btn-success'><a href='edit_supplier.php?id=$id' class='text-white text-decoration-none'>Edit</a></span>
                     <span class='btn btn-danger'><a href='view_supplier.php?deleteid=$id' class='text-white text-decoration-none'>Delete</a></span>

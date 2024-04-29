@@ -47,17 +47,17 @@ if ($_GET['id']){
     
         <div class="col-sm-3"></div>
        
-        <div class="col-sm-6 pt-4 mt-4 border border-success">
+        <div class="col-sm-6 pt-4 mt-4 border border-success bg-dark text-white ">
             
-    <form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST"> 
+    <form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST" > 
         Name:<br>
         <input type ="text" name ="name" value="<?php echo $name ?>"><br><br>
         Price:<br>
         <input type ="text" name ="price" value="<?php echo $price ?>"><br><br>
         manufacturer_id:<br>
         <input type ="text" name ="manufacturer_id" value="<?php echo $manufac ?>"><br><br>
-        <input type ="text" name ="id" value =" <?php echo $id ?>" hidden><br><br>
-        <input type ="submit" name ="edit" value="Edit" class="btn btn-success">
+        <input type ="text" name ="id" value =" <?php echo $id ?>" hidden><br>
+        <input type ="submit" name ="edit" value="Edit" class="btn btn-info"><br><br>
     </form>
    
     </div>

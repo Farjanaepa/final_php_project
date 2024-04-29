@@ -30,24 +30,28 @@ if (isset($_POST['submit'])){
 
     <div class="row">
 
-<h1 class="btn btn-success">Supplier ADD</h1>
+<h1 class="btn btn-secondary"> ADD SUPPLIER</h1>
 <center>
     <div class="row"> 
         <div class="col-sm-2"></div>
-        <div class="col-sm-8 pt-4 mt-4 border border-success"> 
+        <div class="col-sm-8 pt-2 mt-4 border border-success"> 
     
-            <form action="insert_supplier.php" method="POST"> 
-                Name:<br>
+            <form action="insert_supplier.php" method="POST"  class= "bg-secondary text-white" > 
+               
+            <br>
+            Name:<br>
                 <input type ="text" name ="name"><br><br>
                 Email:<br>
                 <input type ="email" name ="email"><br><br>
                 Phone:<br>
                 <input type ="text" name ="phone"><br><br>
                 Address:<br>
-                <input type ="text" name ="address"><br><br>
+                <textarea name="address" id="" ></textarea><br><br>
         
-                <input type ="submit" name ="submit" value="insert" class="btn btn-success">
-                <a href="view_supplier.php" class="btn btn-success">Viewresult</a>
+                <input type ="submit" name ="submit" value="insert" class="btn btn-info">
+                <a href="view_supplier.php" class="btn btn-info">Viewresult</a>
+                <br><br>
+            
             </form>
         </div>
         <div class="col-sm-2"></div>
