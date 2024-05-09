@@ -12,7 +12,7 @@ include("insert.php");
 
 
 
-?php 
+<?php 
     include("includes/footer.php");
    
 ?>
