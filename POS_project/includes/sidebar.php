@@ -56,7 +56,7 @@
             </li>
 
             <li>
-                <a href="product_return_insert.php">
+                <a href="product_return.php">
                     <i class="fa fa-cart-plus"></i>
                     <span>Product Return</span>
 
@@ -79,7 +79,7 @@
             </li>
 
             <li>
-                <a href="customer_insert.php">
+                <a href="customer/index.php">
                     <i class="fa fa-user"></i>
                     <span>Customer</span>
 
