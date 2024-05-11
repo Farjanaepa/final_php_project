@@ -8,13 +8,14 @@
 $conn = mysqli_connect('localhost','root','','pos_project');
 if (isset($_POST['submit'])){ 
     $name = $_POST['name'];
-    $price = $_POST['price'];
-     $manufac = $_POST['manufacturer_id'];
+    $email = $_POST['email'];
+     $phone = $_POST['phone'];
+     $address = $_POST['address'];
 
-     $sql = "INSERT INTO product(name,price,manufacturer_id) VALUES ('$name','$price','$manufac')";
+     $sql = "INSERT INTO suppliers(name,email,phone,address) VALUES ('$name','$email','$phone','$address')";
      if(mysqli_query($conn, $sql) == TRUE){ 
         echo "DATA INSERTED";
-        header('location:view.php');
+        header('location:view_supplier.php');
      }else{ 
         echo "not inserted";
      }
@@ -29,27 +30,31 @@ if (isset($_POST['submit'])){
 
     <div class="row">
 
-<h1 class="btn btn-dark">PRODUCT ADD</h1>
+<h1 class="btn btn-secondary"> ADD CUSTOMER</h1>
 <center>
     <div class="row"> 
         <div class="col-sm-2"></div>
-        <div class="col-sm-8 pt-2 mt-4 border border-success "> 
+        <div class="col-sm-8 pt-2 mt-4 border border-success"> 
     
-            <form action="insert.php" method="POST" class= "bg-dark text-white" >
-            <br>  
-                Product Name:<br>
+            <form action="insert_supplier.php" method="POST"  class= "bg-secondary text-white" > 
+               
+            <br>
+            Name:<br>
                 <input type ="text" name ="name"><br><br>
-                Price:<br>
-                <input type ="text" name ="price"><br><br>
-                manufacturer id:<br>
-                <input type ="text" name ="manufacturer_id"><br><br>
+                Email:<br>
+                <input type ="email" name ="email"><br><br>
+                Phone:<br>
+                <input type ="text" name ="phone"><br><br>
+                Address:<br>
+                <textarea name="address" id="" ></textarea><br><br>
+        
                 <input type ="submit" name ="submit" value="insert" class="btn btn-info">
-                <a href="view.php" class="btn btn-info">Viewresult</a>
-                <br> <br>
+                <a href="view_supplier.php" class="btn btn-info">Viewresult</a>
+                <br><br>
+            
             </form>
         </div>
-        <div class="col-sm-2 "></div>
-        
+        <div class="col-sm-2"></div>
     </div>
 
     </center>

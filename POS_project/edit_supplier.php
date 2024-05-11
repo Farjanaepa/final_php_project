@@ -6,7 +6,7 @@
 
 <?php 
 $conn = mysqli_connect('localhost','root','','pos_project');
-if ($_GET['id']){ 
+if (isset($_GET['id'])){ 
     $getid = $_GET['id'];
    $sql = "SELECT * FROM suppliers WHERE id=$getid";
    $query = mysqli_query($conn, $sql);
@@ -53,7 +53,7 @@ if ($_GET['id']){
        
         <div class="col-sm-6 pt-4 mt-4 bg-dark text-white ">
             
-    <form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST"> 
+    <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST"> 
         Name:<br>
         <input type ="text" name ="name" value="<?php echo $name ?>"><br><br>
         Email:<br>

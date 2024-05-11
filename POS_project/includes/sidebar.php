@@ -56,6 +56,14 @@
             </li>
 
             <li>
+                <a href="product_return_insert.php">
+                    <i class="fa fa-cart-plus"></i>
+                    <span>Product Return</span>
+
+                </a>
+            </li>
+
+            <li>
                 <a href="#">
                     <i class="fa fa-file-text"></i>
                     <span>CRM</span>
@@ -66,6 +74,14 @@
                 <a href="#">
                     <i class="fa fa-edit"></i>
                     <span>Report</span>
+
+                </a>
+            </li>
+
+            <li>
+                <a href="customer_insert.php">
+                    <i class="fa fa-user"></i>
+                    <span>Customer</span>
 
                 </a>
             </li>

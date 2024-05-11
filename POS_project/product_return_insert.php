@@ -29,7 +29,7 @@ if (isset($_POST['submit'])){
 
     <div class="row">
 
-<h1 class="btn btn-dark">PRODUCT ADD</h1>
+<h1 class="btn btn-dark">PRODUCT RETURN</h1>
 <center>
     <div class="row"> 
         <div class="col-sm-2"></div>
