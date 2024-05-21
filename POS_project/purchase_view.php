@@ -11,7 +11,7 @@ if (isset($_GET['deleteid'])){
 
      $sql = "DELETE FROM  products WHERE id = $deleteid";
      if(mysqli_query($conn, $sql) == TRUE){ 
-        header('location:view.php');
+        header('location:purchase_view.php');
      }
 }
 
@@ -29,7 +29,7 @@ if (isset($_GET['deleteid'])){
     
          
 
-    <span class='btn btn-info'><a href='insert.php' class='text-white text-decoration-none'>Add New Product</a></span>
+    <span class='btn btn-info'><a href='purchase_insert.php' class='text-white text-decoration-none'>Product Purchased</a></span>
     
        
     </p>
@@ -65,8 +65,8 @@ if (isset($_GET['deleteid'])){
                     <td>$product_source</td>
                     <td>$quantity</td>
                     <td>
-                    <span class='btn btn-info'><a href='edit.php?id=$id' class='text-white text-decoration-none'>Edit</a></span>
-                    <span class='btn btn-danger'><a href='view.php?deleteid=$id' class='text-white text-decoration-none'>Delete</a></span>
+                    <span class='btn btn-info'><a href='purchase_edit.php?id=$id' class='text-white text-decoration-none'>Edit</a></span>
+                    <span class='btn btn-danger'><a href='purchase_view.php?deleteid=$id' class='text-white text-decoration-none'>Delete</a></span>
                     </td>
                 </tr>";
            }

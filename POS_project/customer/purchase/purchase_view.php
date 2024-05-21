@@ -1,3 +1,5 @@
+<!-- Modals -->
+<!-- Add products modal -->
 
 <?php 
     include("includes/header.php");
@@ -5,14 +7,12 @@
     include("includes/nav.php");
 ?>
 
-<!-- Modals -->
-<!-- Add products modal -->
 <dialog id="my_modal_1" class="modal ">
     <div class="modal-box " style="max-width:800px;">
-        <form method="post" action="viewcode.php">
+        <form method="post" action="purchase.php">
             <!-- Image -->
-            <!-- <label for="product-image">Product Image</label><br>
-            <input name="image" type="text" id="product-image" class="input-field"><br> -->
+            <label for="product-image">Product Image</label><br>
+            <input name="image" type="text" id="product-image" class="input-field"><br>
             <label for="product-name">Product Name</label><br>
             <input name="name" type="text" id="product-name" class="input-field"><br>
             <label for="previous-price">Previous Price</label><br>
@@ -21,23 +21,8 @@
             <input name="discount" type="text" id="discount" class="input-field"><br>
             <label for="present-price">Present Price</label><br>
             <input name="present_price" type="text" id="present-price" class="input-field"><br>
-<!-- 
-            <label for="brand_id">Brand</label><br>
-            <select  class="select-field" name="brand_id" id="brand_id">
-                <?php
-                //     $conn = mysqli_connect('localhost', 'root', '', 'pos_project');
-                //     $query = "SELECT * FROM brand";
-                //     $query_run = mysqli_query($conn,  $query);
-                //     if (mysqli_num_rows($query_run)>0) {
-                //     foreach ($query_run as $row) {
-                //     ?>
-                //     <option value="<?php echo $row['id']?>"><?php echo $row ['name']?></option>
-                //     <?php
-                //  }
-                // }
-                ?>
-            </select><br> -->
-            
+
+          
             <label for="cat_id">Category</label><br>
             <select  class="select-field" name="cat_id" id="cat_id">
                 <?php
@@ -54,8 +39,8 @@
                 ?>
             </select><br>
 
-            <label for="sub_cat_id">Sub-Category</label><br>
-            <select name="sub_cat_id" id="sub_cat_id" class="select-field">
+            <label for="sname">Sub-Category</label><br>
+            <select name="sname" id="sname" class="select-field">
             <?php
                     $conn = mysqli_connect('localhost', 'root', '', 'pos_project');
                     $query = "SELECT * FROM sub_category ";
@@ -64,22 +49,6 @@
                     foreach ($query_run as $row) {
                     ?>
                     <option value="<?php echo $row['id'] ?>"><?php echo $row ['subcatname']?></option>
-                    <?php
-                 }
-                }
-                ?>
-            </select><br>
-
-            <label for="sub_cat_id">Suppliers</label><br>
-            <select name="sub_cat_id" id="sub_cat_id" class="select-field">
-            <?php
-                    $conn = mysqli_connect('localhost', 'root', '', 'pos_project');
-                    $query = "SELECT * FROM suppliers ";
-                    $query_run = mysqli_query($conn,  $query);
-                    if (mysqli_num_rows($query_run)>0) {
-                    foreach ($query_run as $row) {
-                    ?>
-                    <option value="<?php echo $row['id'] ?>"><?php echo $row ['name']?></option>
                     <?php
                  }
                 }
@@ -132,12 +101,12 @@
         <thead>
             <tr>
                 <th>#ID</th>
-                <th>Image</th>
+               
                 <th>Name</th>
                 <th>Previous Price</th>
                 <th>Discount</th>
                 <th>Present Price</th>
-                <th>Brand</th>
+              
                 <th>Category</th>
                 <th>Sub Category</th>
                 <th>Quantity</th>
@@ -148,45 +117,43 @@
         </thead>
         <tbody>
             <?php
-            $conn = mysqli_connect('localhost', 'root', '','pos_project');
+            $conn = mysqli_connect('localhost', 'root', '', 'pos_project');
             if (!$conn) {
                 die("Connection failed: " . mysqli_connect_error());
             }
-            $query = "SELECT product.id, product.name , product.previous_price, product.discount,
-             product.present_price, category.catname cname, sub_category.subcatname sname, product.quantity, product.unit,
-             product.qupon from product, category, sub_category where  product.cat_id = category.id and product.sub_cat_id = sub_category.id";
+            $query = "SELECT product.id, product.name , product.previous_price, product.discount, product.present_price, category.catname cname, sub_category.subcatname sname, product.quantity, product.unit, product.qupon from product, category, sub_category where product.cname = category.id and product.sname = sub_category.id";
 
-            $query_run = mysqli_query($conn, $query);
+            $query_run = mysqli_query($conn,  $query);
             if (mysqli_num_rows($query_run) > 0) {
                 foreach ($query_run as $row) {
             ?>
                     <tr>
                         <th><?php echo $row["id"] ?></th>
-                        <!-- <td class="max-w-40">
+                        <td class="max-w-40">
 
                             <img class="w-full rounded-lg" src="<?php echo $row["image"] ?>" alt="product image">
 
-                        </td> -->
+                        </td>
                         <td><?php echo $row["name"] ?></td>
                         <td><?php echo $row["previous_price"] ?></td>
                         <td><?php echo $row["discount"] ?></td>
                         <td><?php echo $row["present_price"] ?></td>
-                        <td><?php echo $row["bname"] ?></td>
+                       
                         <td><?php echo $row["cname"] ?></td>
                         <td><?php echo $row["sname"] ?></td>
                         <td><?php echo $row["quantity"] ?></td>
                         <td><?php echo $row["unit"] ?></td>
-                        <td><?php echo $row["coupon"] ?></td>
+                        <td><?php echo $row["qupon"] ?></td>
                         <td>
                             <!-- You can open the modal using ID.showModal() method -->
                             <div class="tooltip" data-tip="Edit">
 
-                                <a href="ProductEdit.php?id=<?php echo $row["id"] ?>"><i style="color:green; font-size:20px;" class="fa-regular fa-pen-to-square"></i></a>
+                                <a href="purchase_edit.php?id=<?php echo $row["id"] ?>"><i style="color:green; font-size:20px;" class="fa-regular fa-pen-to-square"></i></a>
 
                             </div>
                             <!-- Delete Button -->
                             <div class="tooltip" data-tip="Delete">
-                                <form action="ViewCode.php" method="post">
+                                <form action="purchase.php" method="post">
                                     <button type="submit" name="delete" value="<?php echo $row['id'] ?>"><i style="color:red; font-size:20px;" class="fa-regular fa-trash-can"></i></button>
                                 </form>
                             </div>
@@ -210,3 +177,7 @@
         </tbody>
     </table>
 </div>
+
+<?php 
+    include("includes/footer.php");
+?>

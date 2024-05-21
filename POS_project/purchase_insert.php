@@ -3,17 +3,17 @@
     include("includes/header.php");
     include("includes/sidebar.php");
     include("includes/nav.php");
-
+?>
+<?php 
 $conn = mysqli_connect('localhost','root','','pos_project');
 if (isset($_POST['submit'])){ 
     $name = $_POST['name'];
     $category = $_POST['category'];
      $product_source = $_POST['product_source'];
      $quantity = $_POST['quantity'];
-     $subcategory = $_POST['subcategory'];
 
 
-     $sql = "INSERT INTO products(name,category,product_source,quantity,subcategory) VALUES ('$name','$category','$product_source','$quantity','$subcategory')";
+     $sql = "INSERT INTO products(name,category,product_source,quantity) VALUES ('$name','$category','$product_source','$quantity')";
      if(mysqli_query($conn, $sql) == TRUE){ 
         echo "DATA INSERTED";
         header('location:view.php');
@@ -53,7 +53,7 @@ if (isset($_POST['submit'])){
               <!-- .row -->
                <div class="card">
                     <div class="card-header bg-white">
-                         <h3 class="card-title"><b>Add a new product</b></h3>
+                         <h3 class="card-title"><b>Purchase product from suppliers</b></h3>
 
 
                     </div>
@@ -64,9 +64,23 @@ if (isset($_POST['submit'])){
                     <div class="row">
                         <div class="col-md-6 ">
                             <div class="form-group"> 
-                            <label for="name"> Product_Name :</label>
-                                <input type ="text" name ="name" class="form-control" id="name" placeholder="Product name" ><br><br>
-
+                            <label for="name"> Supplier_Name :</label>
+                            <select  class="form-control select2" name="supplier" id="supplier">
+                                 <option disabled selected>Select supplier</option>
+                        
+                                    <?php
+                                        $conn = mysqli_connect('localhost', 'root', '', 'pos_project');
+                                        $query = "SELECT * FROM suppliers ";
+                                        $query_run = mysqli_query($conn,  $query);
+                                        if (mysqli_num_rows($query_run)>0) {
+                                        foreach ($query_run as $row) {
+                                        ?>
+                                        <option value="<?php echo $row['id'] ?>"><?php echo $row ['name']?></option>
+                                        <?php
+                                        }
+                                        }
+                                    ?>
+                                </select>
                             </div>
                         </div>
 
@@ -81,6 +95,7 @@ if (isset($_POST['submit'])){
                             </div>
                         </div>
                     </div>
+                    <br><br>
                 <div class="row">
                         <div class="col-md-6">
                         <div class="form-group">
@@ -109,9 +124,9 @@ if (isset($_POST['submit'])){
 
                          <div class="col-md-6">
                              <div class="form-group">
-                            <label for="subcategory">sub-category</label>
+                            <label for="subcategory">Sub-category :</label>
                             <select  class="form-control select2" name="subcategory" id="subcategory">
-                                 <option disabled selected>Select a catagory</option>
+                                 <option disabled selected>Select sub-category</option>
                         
                                     <?php
                                         $conn = mysqli_connect('localhost', 'root', '', 'pos_project');
@@ -131,7 +146,7 @@ if (isset($_POST['submit'])){
 
                        
                 </div>
-                <br>
+                <br><br>
                 <div class="row">
 
                 <div class="col-md-6">
@@ -159,8 +174,8 @@ if (isset($_POST['submit'])){
                          <div class="row text-center  buttons">
                             <div class="col-md-6 offset-md-3 col-lg-6 offset-lg-3">
                            
-                <input type ="submit" name ="submit" value="insert" class="btn btn-info">
-                <a href="view.php" class="btn btn-info">Viewresult</a>
+                <input type ="submit" name ="submit" value="Purchase" class="btn btn-info">
+                <!-- <a href="view.php" class="btn btn-info">Viewresult</a> -->
                 <br><br>
             
                             </div>

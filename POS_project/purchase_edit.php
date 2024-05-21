@@ -16,7 +16,7 @@ if(isset($_GET['id'])){
     $category = $_POST['category'];
      $product_source = $_POST['product_source'];
      $quantity = $_POST['quantity'];
-}
+
      if (isset($_POST['edit'])) {
         $id = $_POST['id'];
         $name = $_POST['name'];
@@ -28,7 +28,7 @@ if(isset($_GET['id'])){
                                 product_source='$product_source',
                                 quantity='$quantity' where id = '$id' ";
      if(mysqli_query($conn, $sql1) == TRUE){ 
-        header('location:view.php');
+        header('location:purchase_view.php');
         echo "DATA update";
      }else{ 
         echo $sqli1. "Data not update";
@@ -74,4 +74,3 @@ if(isset($_GET['id'])){
    
 <?php 
     include("includes/footer.php");
-?>

@@ -18,7 +18,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="category.php">
                     <i class="fa fa-list"></i>
                     <span>Category</span>
 
@@ -26,7 +26,7 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="insert_subcategory.php">
                     <i class="fa fa-windows"></i>
                     <span>Sub-Category</span>
 
@@ -41,9 +41,9 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="purchase_insert.php">
                     <i class="fa fa-cart-arrow-down"></i>
-                    <span>Purchase Order</span>
+                    <span>Purchase</span>
 
                 </a>
             </li>
@@ -79,7 +79,7 @@
             </li>
 
             <li>
-                <a href="customer/index.php">
+                <a href="customer_insert.php">
                     <i class="fa fa-user"></i>
                     <span>Customer</span>
 

@@ -1,3 +1,4 @@
+
 <?php 
     include("includes/header.php");
     include("includes/sidebar.php");
@@ -9,9 +10,9 @@ $conn = mysqli_connect('localhost','root','','pos_project');
 if (isset($_GET['deleteid'])){ 
     $deleteid = $_GET['deleteid'];
 
-     $sql = "DELETE FROM  products WHERE id = $deleteid";
+     $sql = "DELETE FROM sub_category WHERE id = $deleteid";
      if(mysqli_query($conn, $sql) == TRUE){ 
-        header('location:view.php');
+        header('location:view_subcategory.php');
      }
 }
 
@@ -26,61 +27,43 @@ if (isset($_GET['deleteid'])){
     <div class="row"> 
     <p>
      
-    
-         
-
-    <span class='btn btn-info'><a href='insert.php' class='text-white text-decoration-none'>Add New Product</a></span>
-    
-       
+    <span class='btn btn-success'><a href='insert_subcategory.php' class='text-white text-decoration-none'>Add New Subcategory</a></span>
     </p>
         <div class="col-sm-1"></div>
-        <div class="col-sm-10 pt-4 mt-4 border border-success bg-dark text-white"> 
+        <div class="col-sm-10 pt-4 mt-4 border border-success bg-secondary text-white"> 
            
-            <h3 class="text-center p-2 m-2 bg-secondary text-white">Product Information</h3>
+            <h3 class="text-center p-2 m-2 bg-dark text-white">subcategory Information</h3>
            
             <?php 
-            $sql = 'SELECT * FROM products';
+            $sql = 'SELECT * FROM sub_category';
             
             $query = mysqli_query($conn, $sql);
             echo "<table class='table table-success'>
              <tr class='table-dark'>
                 <th>ID</th>
-                <th>PRODUCT NAME</th>
-                <th>CATEGORY</th>
-                <th>PRODUCT_SOURCE</th>
-                 <th>QUANTITY</th>
+                <th>SUBCATEGORY NAME</th>
                 <th>ACTION</th>
              </tr>";
            while ($data = mysqli_fetch_assoc($query)){ 
 
             $id = $data['id'];
-            $name = $data['name'];
-            $category = $data['category'];
-            $product_source = $data['product_source'];
-            $quantity = $data['quantity'];
+            $subcatname = $data['subcatname'];
+
             echo "<tr> 
                     <td>$id</td>
-                    <td>$name</td>
-                    <td>$category</td>
-                    <td>$product_source</td>
-                    <td>$quantity</td>
+                    <td>$subcatname</td>
+
                     <td>
-                    <span class='btn btn-info'><a href='edit.php?id=$id' class='text-white text-decoration-none'>Edit</a></span>
-                    <span class='btn btn-danger'><a href='view.php?deleteid=$id' class='text-white text-decoration-none'>Delete</a></span>
+                    <span class='btn btn-success'><a href='edit_subcategory.php?id=$id'class='text-white text-decoration-none'>Edit</a></span>
+                    <span class='btn btn-danger'><a href='view_subcategory.php?deleteid=$id'class='text-white text-decoration-none'>Delete</a></span>
                     </td>
                 </tr>";
            }
             ?>
         </div>
         <div class="col-sm-1"></div>
-       
-  
     </div>
    </div>
-  
- 
- 
-  
    <?php 
     include("includes/footer.php");
 ?>
