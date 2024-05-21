@@ -1,4 +1,3 @@
-
 <?php 
     include("includes/header.php");
     include("includes/sidebar.php");
@@ -11,17 +10,21 @@ if (isset($_POST['submit'])){
      $product_source = $_POST['product_source'];
      $quantity = $_POST['quantity'];
      $subcategory = $_POST['subcategory'];
+   
+     $product = $_FILES['image']['name'];
+     $temp =$_FILES['image']['temp_name'];
+     move_uploaded_file($temp,"image/$product");
+ 
 
 
-     $sql = "INSERT INTO products(name,category,product_source,quantity,subcategory) VALUES ('$name','$category','$product_source','$quantity','$subcategory')";
+     $sql = "INSERT INTO products(name,category,product_source,quantity,subcategory,image) VALUES ('$name','$category','$product_source','$quantity','$subcategory','$product')";
      if(mysqli_query($conn, $sql) == TRUE){ 
         echo "DATA INSERTED";
-        header('location:view.php');
+        header("Location:view.php");
      }else{ 
         echo "not inserted";
      }
 }
-
 ?>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -154,8 +157,12 @@ if (isset($_POST['submit'])){
                             </div>
                 </div>
 
+               
             </div>
                          <br><br>
+                         <label for="image">Image</label>
+            <input type="file" id="image" name="image"><br><br> 
+                
                          <div class="row text-center  buttons">
                             <div class="col-md-6 offset-md-3 col-lg-6 offset-lg-3">
                            
@@ -167,6 +174,7 @@ if (isset($_POST['submit'])){
                           </div>
                 
                 <br> <br>
+               
             </form>
    
         <div class="col-sm-2 "></div>

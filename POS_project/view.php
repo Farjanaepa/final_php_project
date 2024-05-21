@@ -11,7 +11,7 @@ if (isset($_GET['deleteid'])){
 
      $sql = "DELETE FROM  products WHERE id = $deleteid";
      if(mysqli_query($conn, $sql) == TRUE){ 
-        header('location:view.php');
+        // header('location:view.php');
      }
 }
 
@@ -49,6 +49,7 @@ if (isset($_GET['deleteid'])){
                 <th>CATEGORY</th>
                 <th>PRODUCT_SOURCE</th>
                  <th>QUANTITY</th>
+                 <th>Sub Category</th>
                 <th>ACTION</th>
              </tr>";
            while ($data = mysqli_fetch_assoc($query)){ 
@@ -58,12 +59,14 @@ if (isset($_GET['deleteid'])){
             $category = $data['category'];
             $product_source = $data['product_source'];
             $quantity = $data['quantity'];
+            $subcategory = $data['subcategory'];
             echo "<tr> 
                     <td>$id</td>
                     <td>$name</td>
                     <td>$category</td>
                     <td>$product_source</td>
                     <td>$quantity</td>
+                    <td>$subcategory</td>
                     <td>
                     <span class='btn btn-info'><a href='edit.php?id=$id' class='text-white text-decoration-none'>Edit</a></span>
                     <span class='btn btn-danger'><a href='view.php?deleteid=$id' class='text-white text-decoration-none'>Delete</a></span>
